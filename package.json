@@ -1,7 +1,7 @@
 {
   "name": "waellet-chain-lib",
   "version": "0.0.1",
-  "description": "",
+  "description": "Waellet Chain Library",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --require ts-node/register --require source-map-support/register --full-trace --timeout 40000 ./test/**/**.spec.ts"
@@ -16,6 +16,7 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "@aeternity/aepp-sdk": "^4.5.1",
     "bignumber.js": "^9.0.0"
   }
 }
