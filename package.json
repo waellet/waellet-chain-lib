@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --target es5 ",
     "test": "nyc mocha --require ts-node/register --require source-map-support/register --full-trace --timeout 40000 ./test/**/**.spec.ts"
   },
   "author": "",

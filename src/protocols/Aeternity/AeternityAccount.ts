@@ -5,5 +5,4 @@ export class AeternityAccount implements Account {
     constructor(sdk) {
         this.sdk = sdk;
     }
-    
 }
