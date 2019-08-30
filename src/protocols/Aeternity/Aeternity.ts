@@ -3,6 +3,7 @@ import { AeternityAccount } from "./AeternityAccount";
 import { AeternityTx } from "./AeternityTx";
 import { AeternityNetworks } from './AeternityNetworks';
 
+
 import Universal from '@aeternity/aepp-sdk/es/ae/Universal'
 
 
@@ -17,11 +18,10 @@ export class Aeternity extends BaseProtocol {
         this.sdk = await this.getSdk();
     }
     public async getSdk(): Promise<object> {
-        // console.log(this.networks.activeNetwork.internalUrl)
         return await Universal({
-            url:'https://sdk-testnet.aepps.com', 
-            internalUrl: 'https://sdk-testnet.aepps.com',
-            networkId:  'ae_uat', 
+            url:this.networks.activeNetwork.internalUrl, 
+            internalUrl: this.networks.activeNetwork.internalUrl,
+            networkId:  this.networks.activeNetwork.networkId, 
             nativeMode: true,
             compilerUrl: 'https://compiler.aepps.com'
         })

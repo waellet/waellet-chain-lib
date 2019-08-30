@@ -1,9 +1,8 @@
-import { Network } from './Network';
 
 export interface Networks {
-    list:Network[];
-    activeNetwork:Network;
-    defaultNetwork: Network;
+    list:any[];
+    activeNetwork:any;
+    defaultNetwork: any;
     addNetwork(network: object): void;
     removeNetwork(network: string): void;
     setActive(network: string): void;

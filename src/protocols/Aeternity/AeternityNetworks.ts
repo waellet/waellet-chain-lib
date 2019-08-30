@@ -1,5 +1,6 @@
 import { Networks } from '../../interfaces/Networks';
 import { AeternityNetwork } from './AeternityNetwork';
+import { Network } from '../../interfaces/Network';
 
 export class AeternityNetworks implements Networks {
     public list:Array<AeternityNetwork> = [];
@@ -40,7 +41,6 @@ export class AeternityNetworks implements Networks {
             middlewareUrl
         })
 
-        console.log(network.internalUrl)
         this.list.push(network)
     }
 
@@ -85,7 +85,7 @@ export class AeternityNetworks implements Networks {
             networkId,
             explorerUrl,
             middlewareUrl
-        )
+        ) as AeternityNetwork & Network
     }
 
     private generateNetwork ({ name, pathName, active, networkId }): AeternityNetwork {
