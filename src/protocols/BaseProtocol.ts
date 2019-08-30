@@ -1,11 +1,11 @@
-import { Account } from '../interfaces/Account'
-import { Tx } from '../interfaces/Tx'
-import { Networks } from '../interfaces/Networks';
+import { IAccount } from '../interfaces/IAccount'
+import { ITx } from '../interfaces/ITx'
+import { INetworks } from '../interfaces/INetworks';
 
 export interface BaseProtocol {
-    networks: Networks | undefined;
-    account: Account | undefined;
-    tx: Tx | undefined;
+    networks: INetworks | undefined;
+    account: IAccount | undefined;
+    tx: ITx | undefined;
     sdk: object | undefined;
     getSdk():any;
     listFeatures(): string[];

@@ -18,10 +18,8 @@ export class Aeternity implements BaseProtocol {
         this.sdk = await this.getSdk();
         this.account = new AeternityAccount(this.sdk)
         this.tx = new AeternityTx(this.sdk)
-        console.log(this.sdk)
     }
     public async getSdk(): Promise<object> {
-        console.log(this.networks.activeNetwork)
         return await Universal({
             url:this.networks.activeNetwork.internalUrl, 
             internalUrl: this.networks.activeNetwork.internalUrl,

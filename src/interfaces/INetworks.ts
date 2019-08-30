@@ -1,5 +1,5 @@
 
-export interface Networks {
+export interface INetworks {
     list:any[];
     activeNetwork:any;
     defaultNetwork: any;

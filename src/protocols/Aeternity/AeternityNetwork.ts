@@ -1,6 +1,6 @@
-import { Network } from '../../interfaces/Network';
+import { INetwork } from '../../interfaces/INetwork';
 
-export class AeternityNetwork implements Network {
+export class AeternityNetwork implements INetwork {
     public name: string;
     public active: boolean;
     public internalUrl: string;

@@ -1,8 +1,9 @@
-import { Networks } from '../../interfaces/Networks';
+import { INetworks } from '../../interfaces/INetworks';
 import { AeternityNetwork } from './AeternityNetwork';
-import { Network } from '../../interfaces/Network';
+import { INetwork } from '../../interfaces/INetwork';
+import { ISdk } from '../../interfaces/ISdk';
 
-export class AeternityNetworks implements Networks {
+export class AeternityNetworks implements INetworks, ISdk {
     public list:Array<AeternityNetwork> = [];
     public defaultNetwork: AeternityNetwork;
 
@@ -31,7 +32,10 @@ export class AeternityNetworks implements Networks {
     }
 
     public addNetwork({ name, internalUrl, networkId, explorerUrl, middlewareUrl }: { name: string, internalUrl: string, networkId:string, explorerUrl: string, middlewareUrl: string }): void {
-
+        this.list = this.list.map(n => {
+            n.active = false
+            return n
+        })
         let network = this.generateAeternityNetwork({
             name,
             active:true,
@@ -85,7 +89,7 @@ export class AeternityNetworks implements Networks {
             networkId,
             explorerUrl,
             middlewareUrl
-        ) as AeternityNetwork & Network
+        ) as AeternityNetwork & INetwork
     }
 
     private generateNetwork ({ name, pathName, active, networkId }): AeternityNetwork {
@@ -101,5 +105,9 @@ export class AeternityNetworks implements Networks {
 
     private getActiveNetwork(): AeternityNetwork {
         return this.list.filter(n => n.active)[0]
+    }
+
+    public initSdk(): void {
+        
     }
  }

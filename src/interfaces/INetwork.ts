@@ -1,4 +1,4 @@
-export interface Network {
+export interface INetwork {
     name: string;
     active:boolean;
 }

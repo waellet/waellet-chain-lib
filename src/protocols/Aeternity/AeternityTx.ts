@@ -1,9 +1,10 @@
-import { Tx } from "../../interfaces/Tx";
+import { ITx } from "../../interfaces/ITx";
 import { OBJECT_ID_TX_TYPE, TX_TYPE } from '@aeternity/aepp-sdk/es/tx/builder/schema';
 import { Crypto, TxBuilder } from '@aeternity/aepp-sdk/es';
 import BigNumber from 'bignumber.js'
+import { ISdk } from "../../interfaces/ISdk";
 
-export class AeternityTx implements Tx {
+export class AeternityTx implements ITx, ISdk {
     public SUPPORTED_ТX_TYPES: string[] = [];
     public MAGNITUDE: number = 18;
     public sdk:any 
@@ -24,8 +25,6 @@ export class AeternityTx implements Tx {
         if(!this.SUPPORTED_ТX_TYPES.includes(type)) {
             throw new Error("Unsupported tx type")
         }
-        
-        // console.log(this.sdk.balance(values))
 
         values.amount = parseInt(new BigNumber(values.amount).shiftedBy(this.MAGNITUDE).toString());
         values.fee = parseInt(new BigNumber(values.fee).shiftedBy(this.MAGNITUDE).toString());
@@ -43,6 +42,10 @@ export class AeternityTx implements Tx {
             throw new Error("invalid tx")
         }
         return await this.sdk.sendTransaction(signedTx)
+    }
+
+    public initSdk(): void {
+        
     }
 
 }
