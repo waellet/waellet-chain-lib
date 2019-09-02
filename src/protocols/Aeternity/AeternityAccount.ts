@@ -88,27 +88,21 @@ export class AeternityAccount implements Account {
     }
     
     public async unlockWallet({ accountPassword, encryptedPrivateKey }: {accountPassword: string, encryptedPrivateKey: any }): Promise<any> {
-        // await this.generateKeyPair('123123123', '3c9ed46b5da9b5686abcbd85870adc66c1706c62d2000857820870b960593a6dcb9734abe47a122a2917462ede5994a0a7eff304cab6aeb66d6c1ad021b6eb6c', 'ak_2dY7HSsxH3yGL5j7mNvYYjFGTZwqtLNyoLSSaymn1wLKFSneeQ')
-        // .then(async (res:any)=> {
-        //     res.encryptedPrivateKey = JSON.parse(res.encryptedPrivateKey);
-        //     console.log('res', typeof res.encryptedPrivateKey, res.encryptedPrivateKey)
-            let match = await Keystore.decrypt(
-                // res.
-                encryptedPrivateKey.crypto.ciphertext,
-                accountPassword,
-                // res.
-                encryptedPrivateKey.crypto.cipher_params.nonce,
-                // res.
-                encryptedPrivateKey.crypto.kdf_params.salt
-            );
-            if(match != false) {
-                let wallet = await this.generateHdWallet(match)
-                let { address } = await this.getHdWalletAccount(wallet)
-                return ({ decrypt: true, address })
-            }else {
-                return ({ decrypt: false })
-            }
-        // })
+        //decrypt function is throwing an error beacuse of sdk keystore.js
+        //to resolve should  rewrite of the function
+        let match = await Keystore.decrypt(
+            encryptedPrivateKey.crypto.ciphertext,
+            accountPassword,
+            encryptedPrivateKey.crypto.cipher_params.nonce,
+            encryptedPrivateKey.crypto.kdf_params.salt
+        );
+        if(match != false) {
+            let wallet = await this.generateHdWallet(match)
+            let { address } = await this.getHdWalletAccount(wallet)
+            return ({ decrypt: true, address })
+        }else {
+            return ({ decrypt: false })
+        }
     }
     
     public async generateKeyPair (passphrase: string, privateKey: any, address: string): Promise<object> {
