@@ -16,6 +16,13 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "bignumber.js": "^9.0.0"
+    "@aeternity/aepp-sdk": "^4.5.1",
+    "@aeternity/bip39": "^0.1.0",
+    "@aeternity/hd-wallet": "^0.2.0",
+    "argon2": "^0.24.1",
+    "babel-install": "^2.1.0",
+    "bignumber.js": "^9.0.0",
+    "esm": "^3.2.25",
+    "nacl": "^0.1.3"
   }
 }
