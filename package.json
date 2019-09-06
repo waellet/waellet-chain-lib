@@ -4,6 +4,7 @@
   "description": "Waellet Chain Library",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --target es5 ",
     "test": "nyc mocha --require ts-node/register --require source-map-support/register --full-trace --timeout 40000 ./test/**/**.spec.ts"
   },
   "author": "",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "@aeternity/aepp-sdk": "^4.5.1",
-    "bignumber.js": "^9.0.0"
+    "bignumber.js": "^9.0.0",
+    "esm": "^3.2.25"
   }
 }
